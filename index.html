@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <title>Aliçet Carousel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Kütüphane Ana CSS Dosyası-->
+    <link href="Content/owl.carousel.min.css" rel="stylesheet" />
+    <!--Kütüphane Tema CSS Dosyası-->
+    <link href="Content/owl.theme.default.min.css" rel="stylesheet" />
+    <!--Google Content Delivery Network Üzerinden jQuery, local de olabilir, uğraşmamak için buradan çağırdım-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--Custom CSS-->
+    <style>
+        /*body reset*/
+        body {
+            margin: 0;
+            padding: 0;
+            line-height: 1.4em;
+            font-size: 16px;
+            font-family: sans-serif;
+        }
+
+        /*global button focus reset*/
+        button:focus {
+            outline: 0;
+        }
+
+        /*tam ekran, ekrana hep sığdır*/
+        .img-cover {
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        /*previous ve next buton okları için stil*/
+        .owl-prev span, .owl-next span {
+            font-size: 74px;
+            color: #fff;
+        }
+
+        /*butonlara animasyon hazırlığı*/
+        .owl-prev, .owl-next {
+            opacity: 0.3;
+            -moz-transition-duration: .5s;
+            -webkit-transition-duration: .5s;
+            -o-transition-duration: .5s;
+            -ms-transition-duration: .5s;
+            transition-duration: .5s;
+        }
+
+            .owl-prev:hover, .owl-next:hover {
+                opacity: 1;
+            }
+
+        /*previous butonu için konumlandırma*/
+        button.owl-prev {
+            position: absolute;
+            z-index: 9;
+            top: 50vh;
+            left: 30px;
+        }
+
+        /*next butonu için konumlandırma*/
+        button.owl-next {
+            position: absolute;
+            z-index: 9;
+            top: 50vh;
+            right: 30px;
+        }
+
+        /*slider metin alanı stilleri*/
+        .slide-context {
+            color: #fff;
+            position: absolute;
+            width: 70%;
+            margin: auto;
+            top: 30%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            height: auto;
+            display: table;
+            padding: 30px;
+        }
+
+            .slide-context h1 {
+                margin-top: 0;
+            }
+
+            .slide-context p {
+                margin-bottom: 0;
+            }
+
+        /*metin konumlandırıcılar*/
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="owl-carousel">
+        <div>
+            <div class="img-cover" style="background-image:url(Images/slide1.jpg);">
+                <div class="slide-context text-center">
+                    <h1>Lorem Ipsum Nedir?</h1>
+                    <p>
+                        Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="img-cover" style="background-image:url(Images/slide2.jpg);">
+                <div class="slide-context text-right">
+                    <h1>Nereden Gelir?</h1>
+                    <p>
+                        Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir kaynağa ulaşmıştır.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="img-cover" style="background-image:url(Images/slide3.jpg);">
+                <div class="slide-context text-center">
+                    <h1>Neden Kullanırız?</h1>
+                    <p>
+                        Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığı bilinen bir gerçektir. Lorem Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek, buraya metin gelecek' yazmaya kıyasla daha dengeli bir harf dağılımı sağlayarak okunurluğu artırmasıdır.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Kütüphane JS Dosyası-->
+    <script src="Scripts/owl.carousel.min.js"></script>
+    <!--Init Script-->
+    <script>
+        $(document).ready(function () { //HTML dokümanı hazır olduğunda
+            $('.owl-carousel').owlCarousel({ //owl carousel'i şu parametreler ile başlat
+                loop: true, //sona gelince başa döngü
+                margin: 0, //dış boşluk
+                nav: true, //sağ - sol okları
+                dots: false, //nokta ile slider navigasyonu
+                autoplay: true, //otomatik oynat
+                autoplayTimeout: 5000, //otomatik oynatma süresi
+                autoplayHoverPause: false, //mouse slide üzerindeyken otomatik oynatma dursun mu
+                responsive: { //mobil uyumluluk
+                    0: { //0 pikselden üzeri, bir ekranda gösterilecek nesne sayısı
+                        items: 1
+                    },
+                    600: { //600 pikselden üzeri, bir ekranda gösterilecek nesne sayısı
+                        items: 1
+                    },
+                    1000: { //1000 pikselden üzeri, bir ekranda gösterilecek nesne sayısı
+                        items: 1
+                    }
+                }
+                //navText: ["&laquo;","&raquo;"] //Navigasyon için previous ve next butonları, unicode karakter ile yazdım ama herhangi bir glyphs olabilir
+            });
+        });
+    </script>
+</body>
+</html>
